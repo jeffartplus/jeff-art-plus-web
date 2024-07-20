@@ -4,6 +4,7 @@
 
 	import Section from '$lib/ui/Section.svelte';
 	import SEO from '$lib/ui/components/SEO.svelte';
+	import { urlFor } from '$lib/sanity';
 
 	export let data: PageData;
 	const seo = {
@@ -11,9 +12,7 @@
 		description: ''
 	};
 
-	let artists = data.artists;
-	artists = [artists[0], artists[0], artists[0]];
-	console.log(artists);
+	const artists = data.artists;
 </script>
 
 <SEO data={seo} />
@@ -31,17 +30,18 @@
 					<picture>
 						<!-- <source srcset="" media=""> -->
 						<img
-							src={artist.imageUrl}
+							src={urlFor(artist.image).url()}
 							alt=""
 							srcset=""
 							width="360"
 							height="360"
-							class="aspect-square"
+							class="aspect-square object-cover"
 							loading="lazy"
 							on:error={(e) => console.log(e)}
 						/>
 					</picture>
 					{artist.name}
+					{artist.lastName}
 				</a>
 			</li>
 		{/each}

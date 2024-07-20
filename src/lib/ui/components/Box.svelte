@@ -5,6 +5,7 @@
 	import * as m from '$lib/paraglide/messages';
 
 	export let list;
+	console.log(list[0].images[0]);
 </script>
 
 <hr class="my-24" />

@@ -23,7 +23,7 @@ async function get<T>(query: string, params: Record<string, any> = {}): Promise<
 }
 
 export const getAllArtist = async (): Promise<Artist[]> => {
-	const groq = '*[_type=="artist"] {slug, name, "imageUrl": image.asset->url}';
+	const groq = '*[_type=="artist" && isVisible] {slug, name, lastName, "image":image->images[0]}';
 	const response = await get<Artist[]>(groq);
 
 	if (!response.success) {
