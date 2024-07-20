@@ -8,9 +8,17 @@ declare global {
 		interface Locals {
 			paraglide: ParaglideLocals<AvailableLanguageTag>;
 		}
+		interface Platform {
+			env?: {
+				DB: D1Database;
+			};
+			context: {
+				waitUntil(promise: Promise<any>): void;
+			};
+			caches: CacheStorage & { default: Cache };
+		}
 		// interface PageData {}
 		// interface PageState {}
-		// interface Platform {}
 	}
 }
 
