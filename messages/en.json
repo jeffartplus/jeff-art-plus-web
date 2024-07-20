@@ -1,0 +1,29 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"app_name": "Gallery<br/>Jeff Art Plus",
+	"address": "14th St #112, btwn 11th & 13th, Havana, Cuba.",
+
+	"nav_exhibitions": "Exhibitions",
+	"nav_conversations": "Conversations",
+	"nav_jeff": "JEFF",
+	"nav_contact": "Contact",
+	"nav_artists": "Artists",
+	"nav_about": "About",
+
+	"hero": "BEGIN AN EXPLORATION THROUGH A GALLERY SHOWCASING ARTISAN CREATIVITY.",
+
+	"section_artist_title": "MEET OUR ARTISTS 🧑‍🎨",
+	"section_artist_description": "Dive into the minds of our extraordinary artists. Each profile is a showcase of the passion and talent that defines their work. JEFF ART PLUS Gallery is proud to present you the future of artistic brilliance.",
+
+	"exhibition_item_view_more": "Ver exposición",
+	"exhibition_item_add_to_calendar": "Add to calendar",
+
+	"artwork_label": "Artworks",
+	"available_artwork_label": "Artworks available",
+
+	"view_all": "Ver todos",
+
+	"footer_schedule_hours": "{start} to {end}",
+	"footer_creative_commons": "{year} Gallery Jeff Art Plus. All Rights Reserved."
+}

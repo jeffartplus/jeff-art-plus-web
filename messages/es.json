@@ -1,0 +1,29 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"app_name": "Galería<br/>Jeff Art Plus",
+	"address": "Calle 14 #112 entre 11 y 13, La Habana, Cuba.",
+
+	"nav_exhibitions": "Exposiciones",
+	"nav_conversations": "Conversatorios",
+	"nav_jeff": "JEFF",
+	"nav_contact": "Contacto",
+	"nav_artists": "Artistas",
+	"nav_about": "Sobre nosotros",
+
+	"hero": "COMIENZA UNA EXPLORACIÓN A TRAVÉS DE UNA GALERÍA QUE MUESTRA LA CREATIVIDAD ARTESANAL.",
+
+	"section_artist_title": "CONOCE A NUESTROS ARTISTAS 🧑‍🎨",
+	"section_artist_description": "Sumérgete en las mentes de nuestros extraordinarios artistas. Cada perfil es una muestra de la pasión y el talento que definen su trabajo. La galería JEFF ART PLUS se enorgullece de presentarte el futuro de la brillantez artística.",
+
+	"exhibition_item_view_more": "Ver exposición",
+	"exhibition_item_add_to_calendar": "Agregar al calendario",
+
+	"artwork_label": "Obras de arte",
+	"available_artwork_label": "Obras de arte<br/>disponibles",
+
+	"view_all": "Ver todos",
+
+	"footer_schedule_hours": "De {start} a {end}",
+	"footer_creative_commons": "{year} Galería Jeff Art Plus. Todos los derechos reservados."
+}
