@@ -1,2 +1,1 @@
-name= "jeff-art-plus-web"
-node_compat = true
+compatibility_flags = [ "nodejs_compat" ]
