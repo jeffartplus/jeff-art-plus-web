@@ -9,9 +9,6 @@ declare global {
 			paraglide: ParaglideLocals<AvailableLanguageTag>;
 		}
 		interface Platform {
-			env?: {
-				DB: D1Database;
-			};
 			context: {
 				waitUntil(promise: Promise<any>): void;
 			};

@@ -1,3 +1,4 @@
+import type { ExhibitionSummary } from '$lib/types';
 import { client } from '../sanity';
 import type { Artist } from './types';
 
@@ -34,7 +35,7 @@ export const getAllArtist = async (): Promise<Artist[]> => {
 
 export const getArtistBySlug = async (params: { slug: string }) => {
 	const groq =
-		'*[_type=="artist" && slug.current == $slug]{..., "artWorks": *[_type == "artWork" && references(^._id)] [0..4] {_id, name, createdOn, images[],category->{name}, subcategory->{name}}, "availableArtWorks": *[_type == "artWork" && references(^._id) && available == true] | order(_updatedAt desc) {_id, name, createdOn, images[],category->{name}, subcategory->{name}} [0..4], "exhibitions": *[_type == "exhibition" && references(^._id) && start_date <= now()] | order(start_date desc) [0..4], "conversations": *[_type == "conversation" && references(^._id) && date < now()] | order(date desc) [0..4]}';
+		'*[_type=="artist" && slug.current == $slug]{..., "image":image->images[0], "artWorks": *[_type == "artWork" && references(^._id)] [0..3] {slug, name, createdOn, images[],category->{name}, subcategory->{name}}, "availableArtWorks": *[_type == "artWork" && references(^._id) && available == true] | order(_updatedAt desc) {slug, name, createdOn, images[],category->{name}, subcategory->{name}} [0..3], "exhibitions": *[_type == "exhibition" && references(^._id) && start_date <= now()] | order(start_date desc) [0..3], "conversations": *[_type == "conversation" && references(^._id) && date < now()] | order(date desc) [0..3]}';
 	const response = await get(groq, params);
 
 	if (!response.success) {
@@ -43,6 +44,26 @@ export const getArtistBySlug = async (params: { slug: string }) => {
 
 	const data = response.data as Array<Artist>;
 	if (data.length == 0) {
+		return undefined;
+	}
+
+	return data[0];
+};
+
+export const getArtWorkByArtistSlug = async (params: {
+	artistSlug: string;
+	artWorkSlug: string;
+}) => {
+	const groq =
+		'*[_type == "artist" && slug.current == $artistSlug] {name, lastName, "artwork": *[_type=="artWork" && slug.current == $artWorkSlug && references(^._id)]}';
+	const response = await get(groq, params);
+
+	if (!response.success) {
+		return undefined;
+	}
+
+	const data = response.data as Array<ArtWork>;
+	if (data == undefined) {
 		return undefined;
 	}
 
@@ -59,9 +80,76 @@ export const getArtWorksByArtistSlug = async (params: { slug: string; available:
 	}
 
 	const data = response.data as Array<Artist>;
-	if (data.length == 0) {
+	if (data == undefined) {
 		return undefined;
 	}
 
 	return data[0];
+};
+
+export const getArtWorksByArtistId = async (params: { id: string }) => {
+	const groq = '*[_type=="artWork" && references($id)] {name, createdOn, images}';
+	const response = await get(groq, params);
+
+	if (!response.success) {
+		return [];
+	}
+
+	const data = response.data;
+	if (data == undefined) {
+		return [];
+	}
+
+	return data;
+};
+
+export const getAvailableArtWorksByArtistId = async (params: { id: string }) => {
+	const groq = '*[_type=="artWork" && references($id) && available] {name, createdOn, images}';
+	const response = await get(groq, params);
+
+	if (!response.success) {
+		return [];
+	}
+
+	const data = response.data;
+	if (data == undefined) {
+		return [];
+	}
+
+	return data;
+};
+
+export const getExhibitions = async (): Promise<ExhibitionSummary> => {
+	const groq = `{
+	"current": *[_type=="exhibition" && start_date < now() && end_date > now()]{slug, name, description, start_date, end_date, cover, images,artists[]->{slug, name, lastName}},
+	"upcoming":*[_type=="exhibition" && start_date > now()]{slug, name, description, start_date, end_date, cover, images,artists[]->{slug, name, lastName}}
+	}`;
+
+	const response = await get<ExhibitionSummary>(groq);
+
+	if (!response.success || !response.data) {
+		return {
+			current: [],
+			upcoming: []
+		};
+	}
+
+	return response.data;
+};
+
+export const getExhibitionsByArtistId = async (params: { id: string }) => {
+	const groq =
+		'*[_type=="exhibition" && references($id)] {slug, name, start_date, end_date, cover}';
+	const response = await get(groq, params);
+
+	if (!response.success) {
+		return [];
+	}
+
+	const data = response.data;
+	if (data.length == 0) {
+		return [];
+	}
+
+	return data;
 };

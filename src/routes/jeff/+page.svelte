@@ -1,19 +1,22 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { Grip } from 'lucide-svelte';
-
-	import { urlFor } from '$lib/sanity';
-
-	import * as m from '$lib/paraglide/messages';
 
 	import SEO from '$lib/ui/components/SEO.svelte';
 	import Section from '$lib/ui/Section.svelte';
-	import Box from '$lib/ui/components/Box.svelte';
+	import Box from './Box.svelte';
+	import {
+		getArtWorksByArtistId,
+		getAvailableArtWorksByArtistId,
+		getExhibitionsByArtistId
+	} from '$lib/server/api';
+	import { setArtistContext } from './context';
 
 	export let data: PageData;
 	const { artist, seo } = data;
 	const { name, artWorks, availableArtWorks, exhibitions } = artist;
-	console.log(artWorks);
+
+	setArtistContext(artist);
+
 	let toggle = false;
 </script>
 
@@ -113,15 +116,15 @@
 			propias venturas y desventuras humanas.
 		</p>
 	</div>
-	{#if artWorks.length > 0}
-		<Box list={artWorks} />
+	<!-- {#if artWorks.length > 0}
+		<Box list={artWorks} callback={getArtWorksByArtistId} />
 	{/if}
 	{#if availableArtWorks.length > 0}
-		<Box list={availableArtWorks} />
+		<Box list={availableArtWorks} callback={getAvailableArtWorksByArtistId} />
 	{/if}
 	{#if exhibitions.length > 0}
-		<Box list={exhibitions} />
-	{/if}
+		<Box list={exhibitions} callback={getExhibitionsByArtistId} />
+	{/if} -->
 </Section>
 
 <style>

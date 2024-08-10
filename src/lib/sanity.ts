@@ -1,12 +1,17 @@
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import {
+	PUBLIC_SANITY_API_VERSION,
+	PUBLIC_SANITY_DATASET,
+	PUBLIC_SANITY_ID
+} from '$env/static/public';
 
 function getSanityClient() {
 	return createClient({
-		projectId: 'v7tveygz',
-		dataset: 'production',
+		projectId: PUBLIC_SANITY_ID,
+		dataset: PUBLIC_SANITY_DATASET,
 		useCdn: true,
-		apiVersion: '2022-03-07',
+		apiVersion: PUBLIC_SANITY_API_VERSION,
 		perspective: 'published'
 	});
 }

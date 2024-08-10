@@ -20,9 +20,16 @@
 	"exhibition_item_add_to_calendar": "Agregar al calendario",
 
 	"artwork_label": "Obras de arte",
-	"available_artwork_label": "Obras de arte<br/>disponibles",
+	"available_artwork_label": "Obras de arte disponibles",
+	"enquire": "Preguntar",
 
 	"view_all": "Ver todos",
+	"view_less": "Esconder",
+
+	"upcoming": "Próximas",
+	"upcoming_exhibition": "Proximas exibiciones",
+
+	"history": "Historial",
 
 	"footer_schedule_hours": "De {start} a {end}",
 	"footer_creative_commons": "{year} Galería Jeff Art Plus. Todos los derechos reservados."

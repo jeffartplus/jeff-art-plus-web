@@ -15,6 +15,7 @@
 
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import { MoveRight } from 'lucide-svelte';
 	export let data: {
 		title: string;
 		startDate: Date;
@@ -32,5 +33,6 @@
 	target="_blank"
 	rel="nofollow"
 	{...$$restProps}
-	>{m.exhibition_item_add_to_calendar()}
+	><MoveRight size="16" />
+	<span>{m.exhibition_item_add_to_calendar()}</span>
 </a>

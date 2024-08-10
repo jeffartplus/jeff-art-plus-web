@@ -29,8 +29,11 @@
 				>
 					<picture>
 						<!-- <source srcset="" media=""> -->
+
 						<img
-							src={urlFor(artist.image).url()}
+							src={artist.image
+								? urlFor(artist.image).width(360).height(360).url()
+								: '/avatar_fallback.jpg'}
 							alt=""
 							srcset=""
 							width="360"
@@ -40,8 +43,7 @@
 							on:error={(e) => console.log(e)}
 						/>
 					</picture>
-					{artist.name}
-					{artist.lastName}
+					{`${artist.name} ${artist.lastName}`}
 				</a>
 			</li>
 		{/each}

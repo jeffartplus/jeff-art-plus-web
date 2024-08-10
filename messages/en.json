@@ -21,8 +21,14 @@
 
 	"artwork_label": "Artworks",
 	"available_artwork_label": "Artworks available",
+	"enquire": "Enquire",
 
-	"view_all": "Ver todos",
+	"view_all": "View all",
+	"view_less": "Hide all",
+
+	"upcoming": "Upcoming",
+	"upcoming_exhibition": "Upcoming Exhibition",
+	"history": "History",
 
 	"footer_schedule_hours": "{start} to {end}",
 	"footer_creative_commons": "{year} Gallery Jeff Art Plus. All Rights Reserved."

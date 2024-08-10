@@ -1,6 +1,11 @@
+import { getExhibitions } from '$lib/server/api';
 import type { PageServerLoad } from './$types';
-import * as m from '$lib/paraglide/messages';
 
-export const load = (async () => {
-	return {};
-}) satisfies PageServerLoad;
+export const load: PageServerLoad = async () => {
+	const response = await getExhibitions();
+	const { current, upcoming } = response;
+	return {
+		current,
+		upcoming
+	};
+};
