@@ -18,4 +18,4 @@
 <Hero />
 <!-- <ArtWork /> -->
 <Gallery />
-<Artist />
+<!-- <Artist /> -->
