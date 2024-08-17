@@ -3,6 +3,18 @@ export interface ExhibitionSummary {
 	upcoming: Exhibition[];
 }
 
+export interface QueryResult2 {
+	total: number;
+	conversations: Conversation[];
+}
+
+export interface Conversation {
+	slug: Slug;
+	name: Internationalized[];
+	cover: Image | null;
+	artists: Artist[];
+}
+
 export interface Exhibition {
 	artWorks: Reference[];
 	_rev: string;

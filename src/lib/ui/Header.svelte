@@ -8,10 +8,10 @@
 			name: m.nav_exhibitions,
 			href: '/exhibitions'
 		},
-		// {
-		// 	name: m.nav_conversations,
-		// 	href: '/conversations'
-		// },
+		{
+			name: m.nav_conversations,
+			href: '/conversations'
+		},
 		{
 			name: m.nav_artists,
 			href: '/artists'

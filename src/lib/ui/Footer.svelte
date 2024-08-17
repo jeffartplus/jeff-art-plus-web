@@ -34,7 +34,7 @@
 <footer
 	class="h-fit w-full mb-24 md:mb-4 py-4 border-t border-t-zinc-200 text-xs md:text-sm text-black/[.8] md:text-black/[.8]"
 >
-	<nav class="mx-6 md:mx-14 lg:mx-16 border-t-zinc-200">
+	<!-- <nav class="mx-6 md:mx-14 lg:mx-16 border-t-zinc-200">
 		<ul
 			class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 justify-center justify-items-center gap-y-16 md:gap-y-20 text-base font-normal"
 		>
@@ -63,10 +63,9 @@
 				<ul class="nav-sublist"></ul>
 			</li>
 		</ul>
-	</nav>
-	<div
-		class="flex flex-col md:flex-row gap-2 md:justify-center items-center mt-14 p-6 border-t border-t-zinc-200"
-	>
+	</nav> -->
+	<div class="flex flex-col md:flex-row gap-2 md:justify-center items-center mt-14 p-6">
+		<!-- border-t border-t-zinc-200 -->
 		<a
 			class=" hover:text-black/[.9] transition-colors"
 			target="_blank"

@@ -1,4 +1,4 @@
-import type { ExhibitionSummary } from '$lib/types';
+import type { Exhibition, ExhibitionSummary, QueryResult2 } from '$lib/types';
 import { client } from '../sanity';
 import type { Artist } from './types';
 
@@ -87,8 +87,9 @@ export const getArtWorksByArtistSlug = async (params: { slug: string; available:
 	return data[0];
 };
 
-export const getArtWorksByArtistId = async (params: { id: string }) => {
-	const groq = '*[_type=="artWork" && references($id)] {name, createdOn, images}';
+export const getArtWorksByArtistId = async (params: { id: string; available: boolean }) => {
+	const groq =
+		'*[_type=="artWork" && references($id) && available == $available] {slug, name, createdOn, images}';
 	const response = await get(groq, params);
 
 	if (!response.success) {
@@ -103,23 +104,50 @@ export const getArtWorksByArtistId = async (params: { id: string }) => {
 	return data;
 };
 
-export const getAvailableArtWorksByArtistId = async (params: { id: string }) => {
-	const groq = '*[_type=="artWork" && references($id) && available] {name, createdOn, images}';
-	const response = await get(groq, params);
+export const getConversations = async (params: { offset: number }): Promise<QueryResult2> => {
+	const limit = params.offset + 20;
+	params = {
+		...params,
+		limit
+	};
 
-	if (!response.success) {
-		return [];
+	const groq = `
+		{
+		"total": count(*[_type=="conversation"]),
+		"conversations": *[_type=="conversation"] {slug, name, cover, artists[]->{slug, name, lastName}} [$offset...$limit]
+		}`;
+	const response = await get<QueryResult2>(groq, params);
+	if (!response.success || !response.data) {
+		return {
+			total: 0,
+			conversations: []
+		};
 	}
 
-	const data = response.data;
-	if (data == undefined) {
-		return [];
-	}
-
-	return data;
+	return response.data;
 };
 
-export const getExhibitions = async (): Promise<ExhibitionSummary> => {
+export const getExhibitions = async (params: { offset: number }) => {
+	const limit = params.offset + 20;
+	params = {
+		...params,
+		limit
+	};
+	const groq = `
+		{
+			"total": count(*[_type=="exhibition"]),
+			"exhibitions": *[_type=="exhibition"] {slug, name, description, start_date, end_date, cover, images,artists[]->{slug, name, lastName}} [$offset...$limit]
+		}`;
+	const response = await get<Exhibition[]>(groq, params);
+
+	if (!response.success || !response.data) {
+		return [];
+	}
+
+	return response.data;
+};
+
+export const getExhibitionsSummary = async (): Promise<ExhibitionSummary> => {
 	const groq = `{
 	"current": *[_type=="exhibition" && start_date < now() && end_date > now()]{slug, name, description, start_date, end_date, cover, images,artists[]->{slug, name, lastName}},
 	"upcoming":*[_type=="exhibition" && start_date > now()]{slug, name, description, start_date, end_date, cover, images,artists[]->{slug, name, lastName}}

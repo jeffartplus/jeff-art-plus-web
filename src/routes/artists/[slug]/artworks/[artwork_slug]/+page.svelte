@@ -3,9 +3,9 @@
 	import * as m from '$lib/paraglide/messages';
 	import Seo from '$lib/ui/components/SEO.svelte';
 	import Section from '$lib/ui/Section.svelte';
+	import { ArrowLeft } from 'lucide-svelte';
 	import { getText } from '$lib/utils';
 	import type { PageData } from './$types';
-
 	export let data: PageData;
 
 	const { artist, artwork, seo } = data;
@@ -25,6 +25,11 @@
 <section>
 	<hr class="border-t border-t-zinc-200" />
 	<div class="flex h-full w-full justify-end">
+		<a
+			href="/artists/{artist.slug}"
+			class="w-fit h-fit p-12 hover:bg-slate-50 text-gray-600 hover:text-black rounded-br-xl transition-colors"
+			><ArrowLeft /></a
+		>
 		<div class="flex justify-center items-center grow">
 			<img src={urlFor(images[0]).height(720).url()} alt="" height="720" class="cover" />
 		</div>

@@ -27,10 +27,14 @@ export const getText = (arrayString: a[]) => {
 	return finded ?? defaultString;
 };
 
-export const getRangeDateString = (startDate: Date, endDate: Date, languageTag: string) => {
+export const getRangeDateString = (
+	startDate: Date,
+	endDate: Date,
+	lTag: string = languageTag()
+) => {
 	let options = { day: 'numeric', month: 'short', year: 'numeric' };
 
-	const endDateString = endDate.toLocaleDateString(languageTag, options);
+	const endDateString = endDate.toLocaleDateString(lTag, options);
 
 	if (startDate.getFullYear() == endDate.getFullYear()) {
 		options = {
@@ -39,7 +43,7 @@ export const getRangeDateString = (startDate: Date, endDate: Date, languageTag: 
 		};
 	}
 
-	const startDateString = startDate.toLocaleDateString(languageTag, options);
+	const startDateString = startDate.toLocaleDateString(lTag, options);
 
 	return `${startDateString} - ${endDateString}`;
 };

@@ -16,12 +16,9 @@
 >
 	<picture>
 		<img
-			src={item.images
-				? urlFor(item.images[0]).width(960).height(540).url()
-				: '/avatar_fallback.jpg'}
+			src={item.images ? urlFor(item.images[0]).width(960).url() : '/avatar_fallback.jpg'}
 			alt=""
 			width="960"
-			height="540"
 			srcset=""
 			class="object-cover rounded-sm w-full"
 			loading="lazy"
