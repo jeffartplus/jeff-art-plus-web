@@ -17,7 +17,7 @@
 	<nav slot="nav" aria-label="Sidebar navigation" class="self-center">
 		<ul class="flex gap-8">
 			<li><a href="#upcoming">{m.upcoming()}</a></li>
-			<li><a href="conversations/archive">{m.history()}</a></li>
+			<li><a href="/conversations/archive">{m.history()}</a></li>
 		</ul>
 	</nav>
 	<slot />

@@ -19,6 +19,9 @@
 	"exhibition_item_view_more": "Ver exposición",
 	"exhibition_item_add_to_calendar": "Add to calendar",
 
+	"conversation_label": "Conversation",
+	"conversation_with": "with {names}",
+
 	"artwork_label": "Artworks",
 	"available_artwork_label": "Artworks available",
 	"enquire": "Enquire",

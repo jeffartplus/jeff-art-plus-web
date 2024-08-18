@@ -1,4 +1,4 @@
-import type { Exhibition, ExhibitionSummary, QueryResult2 } from '$lib/types';
+import type { Conversation, Exhibition, ExhibitionSummary, QueryResult2 } from '$lib/types';
 import { client } from '../sanity';
 import type { Artist } from './types';
 
@@ -127,6 +127,19 @@ export const getConversations = async (params: { offset: number }): Promise<Quer
 	return response.data;
 };
 
+export const getConversationBySlug = async (params: {
+	slug: string;
+}): Promise<Conversation | undefined> => {
+	const groq = `*[_type=='conversation' && slug.current == $slug] {date, images, description, artists[]->{name, lastName, summary}}`;
+	const response = await get<Conversation[]>(groq, params);
+
+	if (!response.success || !response.data) {
+		return undefined;
+	}
+
+	return response.data[0];
+};
+
 export const getExhibitions = async (params: { offset: number }) => {
 	const limit = params.offset + 20;
 	params = {
@@ -141,7 +154,10 @@ export const getExhibitions = async (params: { offset: number }) => {
 	const response = await get<Exhibition[]>(groq, params);
 
 	if (!response.success || !response.data) {
-		return [];
+		return {
+			total: 0,
+			exhibitions: []
+		};
 	}
 
 	return response.data;

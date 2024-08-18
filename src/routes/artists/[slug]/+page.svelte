@@ -28,10 +28,10 @@
 	>
 		<div class="flex flex-col text-center gap-4">
 			<h1 class="font-semibold">{name}</h1>
-			<p>B. 1974</p>
+			<!-- <p>B. 1974</p> -->
 		</div>
 		<img
-			src={urlFor(image).url()}
+			src={image ? urlFor(image).width(382).url() : '/avatar_fallback.jpg'}
 			width="382"
 			height="575"
 			alt="Fotografia de José Emilio Fuentes Fonseca"

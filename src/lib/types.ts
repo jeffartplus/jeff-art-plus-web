@@ -10,7 +10,6 @@ export interface QueryResult2 {
 
 export interface Conversation {
 	slug: Slug;
-	name: Internationalized[];
 	cover: Image | null;
 	artists: Artist[];
 }

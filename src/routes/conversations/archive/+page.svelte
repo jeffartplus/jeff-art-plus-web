@@ -2,7 +2,6 @@
 	import { urlFor } from '$lib/sanity';
 	import type { Artist } from '$lib/types';
 	import { ChevronLeft, ChevronRight } from 'lucide-svelte';
-	import { getText, getRangeDateString } from '$lib/utils';
 	import type { PageData } from './$types';
 	import { Pagination } from 'bits-ui';
 
@@ -44,7 +43,7 @@
 			<header class="flex flex-col justify-between">
 				<a href="archive/{conversation.slug.current}" class="hover:underline">
 					<h1 class="text-xl">{joinArtistName(conversation.artists)}</h1>
-					<h2 class="text-lg italic">{getText(conversation.name)}</h2>
+					<h2 class="text-lg italic">Conversatorio</h2>
 				</a>
 			</header>
 		</li>
