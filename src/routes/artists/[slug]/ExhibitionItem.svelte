@@ -24,7 +24,7 @@
 	<header class="flex flex-col justify-between pt-4 gap-8">
 		<div class="flex justify-between">
 			<h3 class="uppercase text-black/80">
-				<a href="/exhibitions/{item.slug.current}" class="hover:underline">{getText(item.name)}</a>
+				<a href="/exhibitions/archive/{item.slug.current}" class="hover:underline">{getText(item.name)}</a>
 			</h3>
 			<p class="font-normal text-sm mt-2">{rangeDate}</p>
 		</div>

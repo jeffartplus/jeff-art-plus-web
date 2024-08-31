@@ -45,7 +45,7 @@
 		<div class="my-12 grow flex justify-center">
 			<img src={urlFor(selectedImage).height(720).url()} alt="" height="720" class="cover p-8" />
 		</div>
-		<header class="flex flex-col gap-6 bg-stone-100 p-8 md:py-16 md:px-12 lg:py-20 lg:px-14">
+		<header class="flex flex-col gap-6 bg-muted w-[30rem] p-8 md:py-16 md:px-12 lg:py-20 lg:px-14">
 			<div class="flex flex-col gap-3">
 				<h1 class="text-2xl md:text-3xl lg:text-4xl">{m.conversation_label()}</h1>
 				<h2 class="text-lg md:text-xl lg:text-2xl text-gray-800 italic">
@@ -54,7 +54,7 @@
 				<!-- <p>{year}</p> -->
 			</div>
 			<hr />
-			<p class="text-black w-[448px]">{getText(description)}</p>
+			<p class="text-black">{getText(description)}</p>
 			<hr />
 			{#if images.length > 1}
 				<div class="flex gap-4 flex-wrap">

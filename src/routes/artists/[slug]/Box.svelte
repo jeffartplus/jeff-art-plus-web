@@ -42,7 +42,7 @@
 <hr class="my-24" />
 <div class="flex flex-col md:flex-row gap-12 md:gap-32 relative">
 	<div class="flex justify-between md:flex-col gap-6 md:h-fit md:sticky md:top-20">
-		<h2 class="w-64">{title}</h2>
+		<h2 class="w-64 text-2xl md:text-3xl lg:text-4xl">{title}</h2>
 		<button
 			class="flex gap-4 items-center"
 			on:click={() => {

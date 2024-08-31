@@ -9,7 +9,7 @@
 	import { setArtistContext } from './context';
 
 	import * as m from '$lib/paraglide/messages';
-	import BoxItem from './BoxItem.svelte';
+	import ArtWorkItem from './ArtWorkItem.svelte';
 	import ExhibitionItem from './ExhibitionItem.svelte';
 
 	export let data: PageData;
@@ -27,7 +27,7 @@
 		class="flex flex-col-reverse lg:flex-row gap-8 lg:gap-0 justify-evenly items-center bg-stone-100 py-24"
 	>
 		<div class="flex flex-col text-center gap-4">
-			<h1 class="font-semibold">{name}</h1>
+			<h1 class="font-semibold text-4xl md:text-5xl lg:text-6xl">{name}</h1>
 			<!-- <p>B. 1974</p> -->
 		</div>
 		<img
@@ -39,16 +39,16 @@
 		/>
 	</header>
 
-	<ArtistBiography {summary} {biography} />
+	<ArtistBiography {summary}/>
 	{#if artWorks.length > 0}
-		<Box title={m.artwork_label()} items={artWorks} path="/artworks" component={BoxItem} />
+		<Box title={m.artwork_label()} items={artWorks} path="/artworks" component={ArtWorkItem} />
 	{/if}
 	{#if availableArtWorks.length > 0}
 		<Box
 			title={m.available_artwork_label()}
 			items={availableArtWorks}
 			path="/artworks?available=true"
-			component={BoxItem}
+			component={ArtWorkItem}
 		/>
 	{/if}
 	{#if exhibitions.length > 0}

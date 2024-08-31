@@ -1,0 +1,11 @@
+services:
+    app: 
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        network_mode: host
+        volumes:
+            - .:/home/app
+            - /home/app/node_modules
+        command: "npm run dev"
+        

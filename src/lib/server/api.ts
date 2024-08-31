@@ -50,6 +50,25 @@ export const getArtistBySlug = async (params: { slug: string }) => {
 	return data[0];
 };
 
+export const getArtWorkBySlug = async (params: {
+	slug: string;
+}) => {
+	const groq =
+		'*[_type == "artWork" && slug.current == $slug] {..., authors[]->{name, lastName}, "category": category->name}';
+	const response = await get(groq, params);
+
+	if (!response.success) {
+		return undefined;
+	}
+
+	const data = response.data as Array<ArtWork>;
+	if (data == undefined) {
+		return undefined;
+	}
+
+	return data[0];
+};
+
 export const getArtWorkByArtistSlug = async (params: {
 	artistSlug: string;
 	artWorkSlug: string;
@@ -162,6 +181,20 @@ export const getExhibitions = async (params: { offset: number }) => {
 
 	return response.data;
 };
+
+
+export const getExhibition = async (params: { slug: string}) => {
+	const groq = `*[_type=="exhibition" && slug.current==$slug] {slug, name, description, cover, start_date, end_date,  artists[]->{slug, name, lastName}, artWorks[]->{slug, name, createdOn, images}}`
+	const response = await get<Exhibition[]>(groq, params);
+
+	if (!response.success || !response.data) {
+		return undefined
+	}
+
+	return response.data[0];
+
+}
+
 
 export const getExhibitionsSummary = async (): Promise<ExhibitionSummary> => {
 	const groq = `{

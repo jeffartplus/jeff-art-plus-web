@@ -32,7 +32,7 @@
 </script>
 
 <footer
-	class="h-fit w-full mb-24 md:mb-4 py-4 border-t border-t-zinc-200 text-xs md:text-sm text-black/[.8] md:text-black/[.8]"
+	class="h-fit w-full mb-24 md:mb-4 py-4 border-t border-t-border text-xs md:text-sm text-black/[.8] md:text-black/[.8]"
 >
 	<!-- <nav class="mx-6 md:mx-14 lg:mx-16 border-t-zinc-200">
 		<ul
